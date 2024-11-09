@@ -5,18 +5,18 @@ import { Text, View, StyleSheet, Pressable, Platform } from "react-native";
 export default function Library() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Enciclopedia</Text>
+      <Text style={styles.title}>Selecciona género</Text>
 
       <View style={styles.buttonContainer}>
-        <Link asChild href={"/"}>
+        <Link asChild href={"/edad"}>
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Ventilación e iluminación</Text>
+            <Text style={styles.buttonText}>Niño</Text>
           </Pressable>
         </Link>
 
-        <Link asChild href={"/"}>
+        <Link asChild href={"/edad"}>
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Control del polvo</Text>
+            <Text style={styles.buttonText}>Niña</Text>
           </Pressable>
         </Link>
       </View>

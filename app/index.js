@@ -15,7 +15,7 @@ export default function Index() {
 
         <Link asChild href={"/library"}>
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Enciclopedia</Text>
+            <Text style={styles.buttonText}>Identificar Enfermedad</Text>
           </Pressable>
         </Link>
       </View>
