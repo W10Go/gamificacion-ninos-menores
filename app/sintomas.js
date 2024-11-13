@@ -1,18 +1,10 @@
-import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 
-import {
-  Text,
-  View,
-  Image,
-  FlatList,
-  StyleSheet,
-  Pressable,
-  Platform,
-} from "react-native";
+import { Text, View, FlatList, StyleSheet, Platform } from "react-native";
 import { Genero } from "../components/Genero";
 import { Edad } from "../components/Edad";
 import { Enfermedad } from "../components/Enfermedad";
+import { RenderOption } from "../components/RenderOption";
 
 export default function Sintomas() {
   const [color, setColor] = useState("");
@@ -21,41 +13,46 @@ export default function Sintomas() {
   const [enfermedad, setEnfermedad] = useState("none");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const options = require("../assets/data/sintomasIRA.json");
+  const [semaforizacion, setSemaforizacion] = useState(0);
+  let oldSem = semaforizacion;
 
+  const updateSemaforizacion = () => {
+    let newSemaforizacion = 0;
+    selectedOptions.forEach((option) => {
+      if (option.semaforizacion === "amarilla") {
+        newSemaforizacion += 1;
+      } else {
+        newSemaforizacion += 3;
+      }
+    });
+    setSemaforizacion(newSemaforizacion);
+    oldSem = semaforizacion;
+  };
   const handleSelectOption = (option) => {
-    if (
-      !selectedOptions.some(
-        (selectedOption) => selectedOption.title === option.title
-      )
-    ) {
+    const isRepeated = selectedOptions.includes(option);
+    if (!isRepeated) {
       // Si no está seleccionada, agregarla al array
       setSelectedOptions((prevSelected) => [...prevSelected, option]);
+      updateSemaforizacion();
+    }
+  };
+  const handleRejectedOption = (option) => {
+    const isRepeated = selectedOptions.includes(option);
+    if (isRepeated) {
+      setSelectedOptions(selectedOptions.filter((item) => item !== option));
+      updateSemaforizacion();
     }
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.optionContainer}>
-      <Text style={styles.optionTitle}>{item.title}</Text>
-      <Image source={{ uri: item.image }} style={styles.optionImage} />
-      <Text style={styles.optionDescription}>{item.description}</Text>
-      <View style={styles.buttonsContainer}>
-        <Pressable
-          style={styles.acceptButton}
-          onPress={() => handleSelectOption(item)}
-        >
-          <Text style={styles.selectButtonText}>Si</Text>
-        </Pressable>
-        <Pressable
-          style={styles.rejectButton}
-          onPress={() => handleSelectOption(item)}
-        >
-          <Text style={styles.selectButtonText}>No</Text>
-        </Pressable>
-      </View>
-    </View>
+    <RenderOption
+      item={item}
+      handleSelectOption={handleSelectOption}
+      handleRejectedOption={handleRejectedOption}
+    />
   );
 
-  const numColumns = Platform.OS === "web" ? 5 : 1;
+  const numColumns = Platform.OS === "web" ? 1 : 1;
 
   useEffect(() => {
     if (genero === "girl") {
@@ -89,7 +86,10 @@ export default function Sintomas() {
                 keyExtractor={(option) => option.title}
                 numColumns={numColumns}
                 contentContainerStyle={styles.flatListContainer}
-                ListFooterComponentStyle={styles.selectedContainer}
+                ListFooterComponentStyle={[
+                  styles.selectedContainer,
+                  { borderColor: oldSem >= 3 ? "#FF9800" : "#F44336" },
+                ]}
                 ListFooterComponent={
                   selectedOptions.length > 0 && (
                     <View>
@@ -97,9 +97,14 @@ export default function Sintomas() {
                         Opciones seleccionadas:
                       </Text>
                       {selectedOptions.map((option) => (
-                        <Text key={option.title} style={styles.selectedOption}>
-                          {option.title}
-                        </Text>
+                        <View>
+                          <Text
+                            key={option.title}
+                            style={styles.selectedOption}
+                          >
+                            {option.title}
+                          </Text>
+                        </View>
                       ))}
                     </View>
                   )
@@ -216,7 +221,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   acceptButton: {
-    backgroundColor: "#4CAF50", // Verde para aceptar
+    backgroundColor: "#0d47a1", // Verde para aceptar
     paddingVertical: 8,
     borderRadius: 5,
     marginRight: 50,
@@ -238,6 +243,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 15,
     borderRadius: 10,
+    borderWidth: 10,
     shadowColor: "#000",
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },

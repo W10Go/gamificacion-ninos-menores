@@ -1,5 +1,4 @@
 import { Link } from "expo-router";
-import EButton from "../components/EButton";
 import { Text, View, StyleSheet, Pressable, Platform } from "react-native";
 
 export default function Library() {

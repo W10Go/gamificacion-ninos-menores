@@ -1,4 +1,4 @@
-import { Text, View, Pressable, StyleSheet } from "react-native";
+import { Text, Pressable, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 
 export function EButton({ recomendation }) {
