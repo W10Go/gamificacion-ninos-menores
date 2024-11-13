@@ -33,7 +33,7 @@
     "title": "¿Su niño presenta aleteo nasal?",
     "image": "https://via.placeholder.com/150",
     "description": "¿El niño ensancha más de lo usual la nariz para poder respirar?",
-    "semaforizacion": "roja"
+    "semaforizacion": "roja",
   },
   {
     "title": "¿Su niño usa los músculos accesorios para respirar?",
@@ -92,6 +92,65 @@
   {
     "title": "¿Ha notado que su niño hace deposiciones con sangre?",
     "image": "https://via.placeholder.com/150",
+  },
+  {
+    "title": "¿Su niño usa los músculos accesorios para respirar?",
+    "image": "https://via.placeholder.com/150",
+    "description": "Cuando su niño respira ¿se le hunden mucho las costillas y debajo de la clavícula?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Ve a su niño con tiraje subcostal?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Su niño presenta hundimiento de la piel entre las costillas al respirar o necesita hacer un esfuerzo mucho mayor al respirar?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Su niño tiene tos?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿El niño ha tenido tos por más de 15 días?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Su niño tiene rigidez en la nuca?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Su niño no puede doblar el cuello con normalidad?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Nota que su niño tiene intolerancia o rechazo a la vía oral?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿El niño no puede comer o beber nada o vomita todo?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Su niño tiene alteración de estado de conciencia: somnolencia o inconsciencia?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Su niño está muy dormido y no se despierta fácilmente o no reacciona?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Su niño presenta convulsiones?",
+    "image": "https://via.placeholder.com/150",
+    "description": "El niño ha presentado convulsiones o movimientos anormales en las últimas 72 horas?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Nota a su niño con cianosis o palidez extrema?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Su niño presenta coloración morada o exageradamente pálido?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Su niño no ha dejado de llorar?",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿El niño tiene llanto inconsolable?",
+    "semaforizacion": "roja"
+  },
+  {
+    "title": "¿Ha notado que su niño hace deposiciones con sangre?",
+    "image": "https://via.placeholder.com/150",
+>>>>>>> 10d68738aa7c4cca9e09a3692e3f765fe30efd45
     "description": "¿El niño ha hecho deposiciones con sangre?",
     "semaforizacion": "roja"
   }
