@@ -7,13 +7,13 @@ export default function Index() {
       <Text style={styles.title}>Bienvenido</Text>
 
       <View style={styles.buttonContainer}>
-        <Link asChild href={"/kidGame"}>
+        <Link asChild href={"/library"}>
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Encontrar Síntomas</Text>
+            <Text style={styles.buttonText}>Enciclopedia</Text>
           </Pressable>
         </Link>
 
-        <Link asChild href={"/library"}>
+        <Link asChild href={"/sintomas"}>
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Identificar Enfermedad</Text>
           </Pressable>

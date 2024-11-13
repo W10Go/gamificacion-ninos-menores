@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,14 +8,12 @@ import {
   Platform,
 } from "react-native";
 
-export default function SelectableOptions() {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const options = require("../assets/data/sintomasIRA.json");
-
-  const handleSelectOption = (option) => {
-    setSelectedOptions((prevSelected) => [...prevSelected, option]);
-  };
-
+export function Option({
+  options,
+  numColumns,
+  handleSelectOption,
+  selectedOptions,
+}) {
   const renderItem = ({ item }) => (
     <View style={styles.optionContainer}>
       <Text style={styles.optionTitle}>{item.title}</Text>
@@ -30,47 +27,44 @@ export default function SelectableOptions() {
       </Pressable>
     </View>
   );
-
-  const numColumns = Platform.OS === "web" ? 3 : 1;
-
   return (
-    <View style={styles.container}>
-      <Text style={[styles.title, { marginTop: 20 }]}>
-        Selecciona los síntomas que tiene el niño
-      </Text>
-      <FlatList
-        data={options}
-        renderItem={renderItem}
-        keyExtractor={(option) => option.title}
-        key={numColumns} // Usar numColumns como clave para forzar el render
-        numColumns={numColumns}
-        contentContainerStyle={styles.flatListContainer}
-        ListFooterComponent={
-          selectedOptions.length > 0 && (
-            <View style={styles.selectedContainer}>
-              <Text style={styles.selectedTitle}>Opciones seleccionadas:</Text>
-              {selectedOptions.map((option, index) => (
-                <Text key={index} style={styles.selectedOption}>
-                  {option.title}
-                </Text>
-              ))}
-            </View>
-          )
-        }
-      />
-    </View>
+    <FlatList
+      data={options}
+      ListHeaderComponent={
+        <Text style={[styles.title, { marginTop: 20 }]}>
+          Selecciona los síntomas que tiene el niño
+        </Text>
+      }
+      renderItem={renderItem}
+      keyExtractor={(option) => option.title}
+      key={numColumns} // Usar numColumns como clave para forzar el render
+      numColumns={numColumns}
+      contentContainerStyle={styles.flatListContainer}
+      ListFooterComponent={
+        selectedOptions.length > 0 && (
+          <View style={styles.selectedContainer}>
+            <Text style={styles.selectedTitle}>Opciones seleccionadas:</Text>
+            {selectedOptions.map((option, index) => (
+              <Text key={index} style={styles.selectedOption}>
+                {option.title}
+              </Text>
+            ))}
+          </View>
+        )
+      }
+    />
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Platform.OS === "web" ? "#e3f2fd" : "#bbdefb",
-    justifyContent: "center",
-    alignContent: "center",
+    justifyContent: "center", // Centrar en el eje vertical
+    alignItems: "center", // Centrar en el eje horizontal
     padding: 20,
   },
   flatListContainer: {
+    flexGrow: 1,
     paddingBottom: 20,
   },
   title: {
@@ -84,11 +78,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 20,
-    margin: 10,
-    flex: 1,
-    minWidth: 150,
-    maxWidth: 200,
-    alignItems: "center",
+    margin: 10, // Añadir margen para que se separe en la cuadrícula
+    flex: 1, // Para que el elemento ocupe espacio equitativo
+    minWidth: 150, // Ancho mínimo para cada columna
+    maxWidth: 200, // Ancho máximo para cada columna
+    alignItems: "center", // Centrar el contenido
   },
   optionTitle: {
     fontSize: 16,

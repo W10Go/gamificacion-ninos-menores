@@ -1,0 +1,54 @@
+{
+  "titulo": "¿Cómo evito que el niño o la niña se enferme?",
+  "data": [
+    {
+      "title": "Control del polvo casero",
+      "recomendaciones": [
+        "Limpiar frecuentemente el polvo de las paredes, estantes y todos los muebles con un paño húmedo.",
+        "Limpiar el piso con un trapo húmedo. Si el piso es de tierra, rocíe agua antes de barrer para no levantar polvo.",
+        "Limpiar con frecuencia estampas, cuadros y otros objetos de las habitaciones con un paño humedecido y blanqueador.",
+        "Sacudir frecuentemente, fuera de la vivienda y lejos de las niñas y niños: cobijas, almohadas y demás ropa de cama.",
+        "Evitar el uso de tapetes.",
+        "Eliminar ropas, papeles y muebles que no se usen."
+      ]
+    },
+    {
+      "title": "Facilitar la ventilación e iluminación natural",
+      "recomendaciones": [
+        "Mantener abiertas las puertas y ventanas de las habitaciones durante el día para que penetren el aire puro y la luz solar.",
+        "Restaurar las ventanas que no se usen o estén clausuradas.",
+        "Si las habitaciones son poco ventiladas o iluminadas, saque las cobijas, colchones y ropas para sacudirlos y exponerlos al sol. Así elimina humedad y hongos.",
+        "Sacar las plantas de las habitaciones porque consumen el oxígeno necesario para las personas.",
+        "Cuando sea posible, construir ventanas amplias."
+      ]
+    },
+    {
+      "title": "Evitar la presencia de humo en la vivienda",
+      "recomendaciones": [
+        "No permita fumar dentro de la vivienda.",
+        "Mantenga fuera de los dormitorios: fogones, estufas, braseros y calentadores que utilicen leña o carbón y que produzcan ceniza y humo."
+      ]
+    },
+    {
+      "title": "Evitar el contacto con personas que tengan gripa o tos",
+      "recomendaciones": [
+        "Al estornudar o toser, hágalo poniendo la parte interna del codo en la nariz.",
+        "Hablar, toser o estornudar lejos de las otras personas, sobre todo de los niños y niñas.",
+        "Usar mascarilla o tapabocas.",
+        "Cuando tenga gripa, procure permanecer y dormir alejado de las niñas y niños.",
+        "Lavar con frecuencia los pañuelos que utilice, así como los utensilios para comer.",
+        "Lavarse las manos con más frecuencia cuando tenga gripa.",
+        "Evitar escupir y arrojar secreciones al piso.",
+        "Recuerde que un niño que se contagie con gripa de un adulto, puede contraer neumonía con facilidad."
+      ]
+    },
+    {
+      "title": "Evitar los cambios bruscos de temperatura",
+      "recomendaciones": [
+        "Tapar la boca y la nariz del niño cuando va a cambiar de temperatura, principalmente en las mañanas y en las noches.",
+        "Mantener el esquema de vacunación completo y vacunas contra COVID-19, según la edad.",
+        "Fomentar la lactancia materna exclusiva en los infantes menores de 6 meses y complementaria hasta los dos años."
+      ]
+    }
+  ]
+}

@@ -1,25 +1,23 @@
 import { Link } from "expo-router";
-
+import EButton from "../components/EButton";
 import { Text, View, StyleSheet, Pressable, Platform } from "react-native";
 
 export default function Library() {
+  const encyclopedia = require("../assets/data/data.json");
+  const title = encyclopedia.titulo;
+  const data = encyclopedia.data;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Selecciona género</Text>
-
-      <View style={styles.buttonContainer}>
-        <Link asChild href={"/edad"}>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Niño</Text>
-          </Pressable>
-        </Link>
-
-        <Link asChild href={"/edad"}>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Niña</Text>
-          </Pressable>
-        </Link>
-      </View>
+      <Text style={styles.title}>{title}</Text>
+      {data.map((element) => {
+        return (
+          <Link asChild href={"/"}>
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>{element.title}</Text>
+            </Pressable>
+          </Link>
+        );
+      })}
     </View>
   );
 }

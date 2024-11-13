@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Mala respiración",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Presenta dificultad para respirar o respiración rápida / respiración entrecortada, cansada, agitada, rápida o diferente de la normal?",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño letárgico",
+    "image": "https://via.placeholder.com/150",
+    "description": "¿Se encuentra en estado letárgico, o inconsciente, inconsciente adormecido o no despierta con facilidad?",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Ruidos al respirar",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño que hace ruidos al respirar: Acerque su oído a la boca y nariz del niño, para detectar ronquidos, silbidos, sonidos agudos y anormales durante la respiración.",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con cianosis en reposo",
+    "image": "https://via.placeholder.com/150",
+    "description": "Se pone morado cuando está quieto.",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con cianosis cuando se agita",
+    "image": "https://via.placeholder.com/150",
+    "description": "Se pone morado cuando se mueve.",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con aleteo nasal",
+    "image": "https://via.placeholder.com/150",
+    "description": "Ensancha más de lo usual la nariz para poder respirar",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño que usa músculos accesorios para respirar",
+    "image": "https://via.placeholder.com/150",
+    "description": "Cuando respira se le hunden mucho las costillas y debajo de la clavícula",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con tiraje subcostal",
+    "image": "https://via.placeholder.com/150",
+    "description": "Hundimiento de la piel entre las costillas al respirar / necesita hacer un esfuerzo mucho mayor al respirar",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con tos",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño con tos por más de 15 días",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con rigidez en la nuca",
+    "image": "https://via.placeholder.com/150",
+    "description": "No puede doblar el cuello",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con intolerancia o rechazo a la vía oral",
+    "image": "https://via.placeholder.com/150",
+    "description": "No puede comer o beber nada o vomita todo",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con alteración de estado de conciencia: somnolencia o inconsciencia",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño que está muy dormido y no se despierta fácilmente o que no reacciona",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con convulsiones",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño con convulsiones o movimientos anormales en las últimas 72 horas.",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con cianosis o palidez extrema",
+    "image": "https://via.placeholder.com/150",
+    "description": "Que esté con coloración morada o exageradamente pálido",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con llanto",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño con llanto inconsolable",
+    "semaforizacion": "amarilla"
+  },
+  {
+    "title": "Niño con deposiciones con sangre",
+    "image": "https://via.placeholder.com/150",
+    "description": "Niño con deposiciones con sangre – descarte lesiones en ano.",
+    "semaforizacion": "amarilla"
+  }
+]
