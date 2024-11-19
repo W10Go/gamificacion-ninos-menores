@@ -1,5 +1,6 @@
-import { Link } from "expo-router";
+// index.js
 import { View, Pressable, Text, StyleSheet, Platform } from "react-native";
+import { Link } from "expo-router";
 
 export default function Index() {
   return (
@@ -7,13 +8,15 @@ export default function Index() {
       <Text style={styles.title}>Bienvenido</Text>
 
       <View style={styles.buttonContainer}>
-        <Link asChild href={"/library"}>
+        {/* Este es el botón que lleva a la página de enciclopedia */}
+        <Link asChild href="/library">
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Enciclopedia</Text>
           </Pressable>
         </Link>
 
-        <Link asChild href={"/sintomas"}>
+        {/* Este es el botón que lleva a la página de síntomas */}
+        <Link asChild href="/sintomas">
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Identificar Enfermedad</Text>
           </Pressable>
@@ -61,3 +64,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+

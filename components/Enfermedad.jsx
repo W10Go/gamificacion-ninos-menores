@@ -1,19 +1,19 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-export function Enfermedad({ enfermedad, setEnfermedad }) {
+export function Enfermedad({ enfermedad, setEnfermedad, textColor, buttonColor }) {
   return (
     <View>
       {enfermedad === "none" ? (
         <View>
-          <Text style={styles.title}>Selecciona enfermedad</Text>
-          <Pressable style={styles.button} onPress={() => setEnfermedad("IRA")}>
+          <Text style={[styles.title, { color: textColor }]}>Selecciona enfermedad</Text>
+          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEnfermedad("IRA")}>
             <Text style={styles.buttonText}>IRA(Gripa)</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => setEnfermedad("EDA")}>
+          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEnfermedad("EDA")}>
             <Text style={styles.buttonText}>EDA(Diarrea)</Text>
           </Pressable>
           <Pressable
-            style={styles.button}
+            style={[styles.button, { backgroundColor: buttonColor }]}
             onPress={() => setEnfermedad("AMBAS")}
           >
             <Text style={styles.buttonText}>IRA y EDA(Diarrea y gripa)</Text>
@@ -25,15 +25,14 @@ export function Enfermedad({ enfermedad, setEnfermedad }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: 40,
-    color: "#0d47a1", // Azul oscuro para contraste
   },
   button: {
-    backgroundColor: "#64b5f6", // Azul brillante para los botones
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 10,
@@ -51,3 +50,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+

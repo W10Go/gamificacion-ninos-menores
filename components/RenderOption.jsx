@@ -6,18 +6,21 @@ export function RenderOption({
   handleSelectOption,
   handleRejectedOption,
 }) {
-  const imageUrl = require(`../assets/images/kid.jpg`);
+  
   return (
     <View style={styles.optionContainer}>
       <Text style={styles.optionTitle}>{item.title}</Text>
-
+ {/* Utilizar la URL de item.image o fallback a kid.jpg */}
       <Image
-        source={useImage(imageUrl, {
-          onError(err, retry) {
-            "hola";
-          },
-        })} // Asegúrate de usar 'item.image' aquí
+        source={
+          item.image
+            ? { uri: item.image } // URL dinámica de item.image
+            : require("../assets/images/kid.jpg") // Imagen predeterminada
+        }
         style={styles.optionImage}
+        onError={(error) =>
+          console.log(`Error al cargar la imagen para ${item.title}:`, error)
+        }
       />
       <Text style={styles.optionDescription}>{item.description}</Text>
       <View style={styles.buttonsContainer}>
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   acceptButton: {
-    backgroundColor: "#4CAF50", // Verde para aceptar
+    backgroundColor: "#003366", // Azul medianoche para "Sí"
     paddingVertical: 8,
     borderRadius: 5,
     marginRight: 50,
@@ -120,7 +123,7 @@ const styles = StyleSheet.create({
     width: "45%", // Botones ocupan el 45% del ancho
   },
   rejectButton: {
-    backgroundColor: "#F44336", // Rojo para rechazar
+    backgroundColor: "#B0BEC5", // Gris ceniza claro para "No"
     paddingVertical: 8,
     borderRadius: 5,
     alignItems: "center",
