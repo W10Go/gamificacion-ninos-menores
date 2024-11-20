@@ -1,28 +1,26 @@
-// SplashScreen.js
-import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { useRouter } from "expo-router"; // Para navegar entre pantallas
+import { View, Pressable, Text, StyleSheet, Platform } from "react-native";
+import { Link } from "expo-router";
 
 export default function SplashScreen() {
-  const router = useRouter();
-
-  // Función que se llama al presionar el botón "Ingresar"
-  const handleIngresar = () => {
-    router.push("/index");  // Redirige a la pantalla principal (index.js)
-  };
-
   return (
     <View style={styles.container}>
-      {/* Carga la imagen desde una URL */}
-      <Image
-        source={{ uri: "https://www.example.com/path/to/your/logo.jpg" }}  // Sustituye esta URL con la de tu logo
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Nombre de la App</Text>
+      <Text style={styles.title}>Bienvenido</Text>
 
-      {/* Botón "Ingresar" */}
-      <Pressable style={styles.button} onPress={handleIngresar}>
-        <Text style={styles.buttonText}>Ingresar</Text>
-      </Pressable>
+      <View style={styles.buttonContainer}>
+        {/* Botón que lleva a la página de enciclopedia */}
+        <Link asChild href="/library">
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Enciclopedia</Text>
+          </Pressable>
+        </Link>
+
+        {/* Botón que lleva a la página de síntomas */}
+        <Link asChild href="/sintomas">
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Identificar Enfermedad</Text>
+          </Pressable>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -30,29 +28,37 @@ export default function SplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center", // Centrado verticalmente
-    alignItems: "center",     // Centrado horizontalmente
-    backgroundColor: "#f8bbd0", // Fondo rosado claro
-  },
-  logo: {
-    width: 200,   // Ancho del logo
-    height: 200,  // Alto del logo
-    marginBottom: 20,  // Espacio entre el logo y el título
+    justifyContent: "center", // Centrar en el eje vertical
+    alignItems: "center", // Centrar en el eje horizontal
+    backgroundColor: Platform.OS === "web" ? "#e3f2fd" : "#bbdefb", // Fondo azul claro
+    padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: "bold",
-    color: "#d81b60", // Color rosado oscuro para el título
+    marginBottom: 40,
+    color: "#0d47a1", // Azul oscuro para contraste
+  },
+  buttonContainer: {
+    width: "100%",
+    alignItems: "center",
   },
   button: {
-    backgroundColor: "#d81b60", // Fondo rosado para el botón
+    backgroundColor: "#64b5f6", // Azul brillante para los botones
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 10,
-    marginTop: 20,
+    marginBottom: 20,
+    width: "80%", // Ancho del 80% del contenedor
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 5, // Sombra para Android
   },
   buttonText: {
-    color: "#fff", // Texto blanco para el botón
+    color: "#fff", // Texto blanco para contraste
     fontSize: 18,
     fontWeight: "bold",
   },

@@ -13,9 +13,25 @@ export default function Sintomas() {
   const [edad, setEdad] = useState(0);
   const [enfermedad, setEnfermedad] = useState("none");
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const options = require("../assets/data/sintomasIRA.json");
   const [semaforizacion, setSemaforizacion] = useState(0);
-  let oldSem = semaforizacion;
+  const [options, setOptions] = useState([]); // Aquí cargaremos los síntomas
+
+  useEffect(() => {
+    if (enfermedad === "IRA") {
+      // Cargar síntomas de IRA
+      setOptions(require("../assets/data/sintomasIRA.json"));
+    } else if (enfermedad === "EDA") {
+      // Cargar síntomas de EDA
+      setOptions(require("../assets/data/sintomasEDA.json"));
+    } else if (enfermedad === "AMBAS") {
+      // Combinar síntomas de IRA y EDA
+      const sintomasIRA = require("../assets/data/sintomasIRA.json");
+      const sintomasEDA = require("../assets/data/sintomasEDA.json");
+      setOptions([...sintomasIRA, ...sintomasEDA]); // Combina ambas listas
+    } else {
+      setOptions([]); // Si no hay enfermedad seleccionada, no mostrar nada
+    }
+  }, [enfermedad]);
 
   const updateSemaforizacion = () => {
     let newSemaforizacion = 0;
@@ -27,13 +43,11 @@ export default function Sintomas() {
       }
     });
     setSemaforizacion(newSemaforizacion);
-    oldSem = semaforizacion;
   };
 
   const handleSelectOption = (option) => {
     const isRepeated = selectedOptions.includes(option);
     if (!isRepeated) {
-      // Si no está seleccionada, agregarla al array
       setSelectedOptions((prevSelected) => [...prevSelected, option]);
       updateSemaforizacion();
     }
@@ -59,13 +73,13 @@ export default function Sintomas() {
 
   useEffect(() => {
     if (genero === "girl") {
-      setColor("#FCE4EC");  // Rosado pastel para el fondo
-      setButtonColor("#F06292");  // Rosado oscuro para los botones
-      setTextColor("#D81B60");  // Un rosado oscuro para el texto
+      setColor("#FCE4EC");
+      setButtonColor("#F06292");
+      setTextColor("#D81B60");
     } else {
-      setColor("#e3f2fd");  // Azul para el fondo
-      setButtonColor("#64b5f6");  // Azul para los botones
-      setTextColor("#0d47a1");  // Azul para el texto
+      setColor("#e3f2fd");
+      setButtonColor("#64b5f6");
+      setTextColor("#0d47a1");
     }
   }, [genero]);
 
@@ -73,23 +87,16 @@ export default function Sintomas() {
     <View style={[styles.container, { backgroundColor: color }]}>
       <View style={styles.buttonContainer}>
         <Genero genero={genero} setGenero={setGenero} textColor={textColor} buttonColor={buttonColor} />
-
         {genero !== "none" ? <Edad edad={edad} setEdad={setEdad} textColor={textColor} buttonColor={buttonColor} /> : <></>}
         {edad !== 0 ? (
-          <Enfermedad
-          enfermedad={enfermedad}
-          setEnfermedad={setEnfermedad}
-          textColor={textColor}  // Color del texto
-          buttonColor={buttonColor}  // Color de los botones
-        />
+          <Enfermedad enfermedad={enfermedad} setEnfermedad={setEnfermedad} textColor={textColor} buttonColor={buttonColor} />
         ) : (
           <></>
         )}
-        {enfermedad !== "none" ? (
+        {enfermedad !== "none" && options.length > 0 ? (
           <View>
             <Text style={[styles.title, { marginTop: 20, color: textColor }]}>
-              Selecciona los síntomas que tiene{" "}
-              {genero === "girl" ? "la niña" : "el niño"}
+              Selecciona los síntomas que tiene {genero === "girl" ? "la niña" : "el niño"}
             </Text>
             <View style={styles.optionsContainer}>
               <FlatList
@@ -98,7 +105,7 @@ export default function Sintomas() {
                 keyExtractor={(option) => option.title}
                 numColumns={numColumns}
                 contentContainerStyle={styles.flatListContainer}
-                ListFooterComponentStyle={[styles.selectedContainer, { borderColor: oldSem >= 3 ? "#FF9800" : "#F44336" }]}
+                ListFooterComponentStyle={[styles.selectedContainer, { borderColor: semaforizacion >= 3 ? "#FF9800" : "#F44336" }]}
                 ListFooterComponent={
                   selectedOptions.length > 0 && (
                     <View>

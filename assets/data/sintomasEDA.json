@@ -1,0 +1,93 @@
+[
+    {
+      "title": "¿Su niño se encuetra intranquilo?",
+      "image": "https://i.ibb.co/7Q4zMQ2/Irritable.jpg",
+      "description": "¿Su niño esta intranquilo o se incuentra mas irritable de lo normal?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿Su niño está en estado letárgico?",
+      "image": "https://i.ibb.co/qDPv7xL/Ni-o-letargico.jpg",
+      "description": "¿Su niño se encuentra en estado letárgico, inconsciente, no reacciona?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño tiene ojos hundidos?",
+      "image": "https://i.ibb.co/QNWjtm1/ojos-hundidos.jpg",
+      "description": "¿Nota que su niño tiene ojos hundidos u ojeras pronunciadas?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿Su niño tiene los ojos muy hundidos y secos?",
+      "image": "https://i.ibb.co/5Y96S0Y/ojos-hundidos-y-secos.jpg",
+      "description": "¿El niño presenta resequedad y hundimiento en los ojos?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño presenta poquitas lágrimas?",
+      "image": "https://i.ibb.co/MCBbGZ8/l-grimas-escasas.jpg",
+      "description": "¿Nota que su niño tiene muy poquitas lágrimas o muy escasas?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿Su niño tiene ausencia de lágrimas?",
+      "image": "https://i.ibb.co/xFSYVhw/l-grimas-ausentes.jpg",
+      "description": "¿Nota que su niño tiene lágrimas ausentes o no presenta lágrimas?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño presenta boca seca?",
+      "image": "https://i.ibb.co/VJKXSd0/Boca-seca.jpg",
+      "description": "¿Ve que su niño tiene la lengua y la boca seca?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿Su niño presenta boca y lengua muy secas?",
+      "image": "https://i.ibb.co/RYY3yq7/Labios-y-boca-muy-secos.jpg",
+      "description": "¿Ha notado que su niño tiene la boca, los labios y la lengua muy secos?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño tiene mucha sed?",
+      "image": "https://i.ibb.co/1rPX8dY/Ni-o-con-sed.jpg",
+      "description": "¿Ha notado que su niño tenga mucha sed, beba rapida y de forma ansiosa?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿Su niño presenta dificultad para beber?",
+      "image": "https://i.ibb.co/LgCmJxc/bebe-agua-mal.jpg",
+      "description": "¿Ha notado que su niño bebe mal o que no es capaz de beber, aunque lo intenta?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿El signo de pliegue a su niño regresa lentamente?",
+      "image": "https://i.ibb.co/wg2jf4d/plieguesigno1.png",
+      "description": "¿Nota que a su niño al hacerle el signo de pliegue este regresa/desaparece lentamente?",
+      "semaforizacion": "amarilla"
+    },
+    {
+      "title": "¿El signo de pliegue a su niño regresa muy lentamente?",
+      "image": "https://i.ibb.co/1rBKhYt/pliegue3.png",
+      "description": "¿Nota que a su niño al hacerle el signo de pliegue este regresa o desaparece con demasiada lentitud o muy demorado mayor a 2 sg?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño está orinando poco?",
+      "image": "https://i.ibb.co/8cJd1tM/orina-poco.jpg",
+      "description": "¿Ha notado que su niño orina muy poco o deja de orinar?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño está presentando diarrea?",
+      "image": "https://i.ibb.co/Jpn31Fz/ni-o-con-diarrea.jpg",
+      "description": "¿El niño está presentando deposiciones muy líquidas y frecuentes / diarrea (más de 10 en el día)?",
+      "semaforizacion": "roja"
+    },
+    {
+      "title": "¿Su niño ha estado vomitando demasiado?",
+      "image": "https://i.ibb.co/r0NNzdQ/ni-o-vomito.jpg",
+      "description": "¿El niño está vomitando todo? (más de 4 episodios de vómito en 4 horas)",
+      "semaforizacion": "roja"
+    }
+  ]
+  

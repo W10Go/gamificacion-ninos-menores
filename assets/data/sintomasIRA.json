@@ -6,7 +6,7 @@
     "semaforizacion": "roja"
   },
   {
-    "title": "¿Su niño está en estado letárgico'",
+    "title": "¿Su niño está en estado letárgico?",
     "image": "https://i.ibb.co/qDPv7xL/Ni-o-letargico.jpg",
     "description": "¿Su niño se encuentra en estado letárgico, o inconsciente, inconsciente adormecido o no despierta con facilidad?",
     "semaforizacion": "roja"
@@ -91,7 +91,7 @@
   },
   {
     "title": "¿Ha notado que su niño hace deposiciones con sangre?",
-    "image": "https://i.ibb.co/cyDMGyK/bloodPoo.png",
+    "image": "https://i.ibb.co/dKqprKp/Blody-Poop.png",
     "description": "¿El niño ha hecho deposiciones con sangre?",
     "semaforizacion": "roja"
   }
