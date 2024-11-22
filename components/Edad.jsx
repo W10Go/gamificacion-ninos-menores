@@ -5,12 +5,20 @@ export function Edad({ edad, setEdad, textColor, buttonColor }) {
     <View>
       {edad === 0 ? (
         <View>
-          <Text style={[styles.title, { color: textColor }]}>Selecciona edad</Text>
+          <Text style={[styles.title, { color: textColor }]}>
+            Selecciona edad
+          </Text>
 
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEdad(1)}>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setEdad(1)}
+          >
             <Text style={styles.buttonText}>De 0 a 11 meses</Text>
           </Pressable>
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEdad(2)}>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setEdad(2)}
+          >
             <Text style={styles.buttonText}>De 1 a 5 años</Text>
           </Pressable>
         </View>
@@ -45,4 +53,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

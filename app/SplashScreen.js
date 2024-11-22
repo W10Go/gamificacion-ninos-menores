@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet, Platform } from "react-native";
+import { View, Pressable, Text, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 40,
     color: "#0d47a1", // Azul oscuro para contraste
-    
   },
   buttonContainer: {
     width: "100%",

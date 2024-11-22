@@ -5,12 +5,20 @@ export function Genero({ genero, setGenero, textColor, buttonColor }) {
     <View>
       {genero === "none" ? (
         <View>
-          <Text style={[styles.title, { color: textColor }]}>Selecciona género</Text>
+          <Text style={[styles.title, { color: textColor }]}>
+            Selecciona género
+          </Text>
 
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setGenero("boy")}>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setGenero("boy")}
+          >
             <Text style={styles.buttonText}>Niño</Text>
           </Pressable>
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setGenero("girl")}>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setGenero("girl")}
+          >
             <Text style={styles.buttonText}>Niña</Text>
           </Pressable>
         </View>
@@ -45,4 +53,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

@@ -1,8 +1,8 @@
 import { View, Pressable, Text, StyleSheet, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
-import { AmaticSC_400Regular } from '@expo-google-fonts/amatic-sc';
-import { LinearGradient } from 'expo-linear-gradient';
+import { AmaticSC_400Regular } from "@expo-google-fonts/amatic-sc";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Index() {
   const router = useRouter();
@@ -32,7 +32,10 @@ export default function Index() {
       <Text style={styles.title}>Creciendo Sano</Text>
 
       {/* Botón "Ingresar" */}
-      <Pressable style={styles.button} onPress={() => router.push("/SplashScreen")}>
+      <Pressable
+        style={styles.button}
+        onPress={() => router.push("/SplashScreen")}
+      >
         <Text style={styles.buttonText}>Ingresar</Text>
       </Pressable>
     </LinearGradient>
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 55,
     color: "#fff",
     marginBottom: 40,
-    fontFamily: 'AmaticSC_400Regular',
+    fontFamily: "AmaticSC_400Regular",
     textShadowColor: "rgba(0, 0, 0, 0.5)", // Sombra negra semi-transparente
     textShadowOffset: { width: 2, height: 2 }, // Desplazamiento de la sombra
     textShadowRadius: 4, // Difusión de la sombra
@@ -79,6 +82,3 @@ const styles = StyleSheet.create({
     textShadowRadius: 2, // Difusión de la sombra
   },
 });
-
-
-

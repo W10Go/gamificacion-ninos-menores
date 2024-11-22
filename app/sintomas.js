@@ -66,6 +66,7 @@ export default function Sintomas() {
       item={item}
       handleSelectOption={handleSelectOption}
       handleRejectedOption={handleRejectedOption}
+      semaforizacion={semaforizacion}
     />
   );
 
@@ -86,17 +87,37 @@ export default function Sintomas() {
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
       <View style={styles.buttonContainer}>
-        <Genero genero={genero} setGenero={setGenero} textColor={textColor} buttonColor={buttonColor} />
-        {genero !== "none" ? <Edad edad={edad} setEdad={setEdad} textColor={textColor} buttonColor={buttonColor} /> : <></>}
+        <Genero
+          genero={genero}
+          setGenero={setGenero}
+          textColor={textColor}
+          buttonColor={buttonColor}
+        />
+        {genero !== "none" ? (
+          <Edad
+            edad={edad}
+            setEdad={setEdad}
+            textColor={textColor}
+            buttonColor={buttonColor}
+          />
+        ) : (
+          <></>
+        )}
         {edad !== 0 ? (
-          <Enfermedad enfermedad={enfermedad} setEnfermedad={setEnfermedad} textColor={textColor} buttonColor={buttonColor} />
+          <Enfermedad
+            enfermedad={enfermedad}
+            setEnfermedad={setEnfermedad}
+            textColor={textColor}
+            buttonColor={buttonColor}
+          />
         ) : (
           <></>
         )}
         {enfermedad !== "none" && options.length > 0 ? (
           <View>
             <Text style={[styles.title, { marginTop: 20, color: textColor }]}>
-              Selecciona los síntomas que tiene {genero === "girl" ? "la niña" : "el niño"}
+              Selecciona los síntomas que tiene{" "}
+              {genero === "girl" ? "la niña" : "el niño"}
             </Text>
             <View style={styles.optionsContainer}>
               <FlatList
@@ -105,16 +126,26 @@ export default function Sintomas() {
                 keyExtractor={(option) => option.title}
                 numColumns={numColumns}
                 contentContainerStyle={styles.flatListContainer}
-                ListFooterComponentStyle={[styles.selectedContainer, { borderColor: semaforizacion >= 3 ? "#FF9800" : "#F44336" }]}
+                ListFooterComponentStyle={[
+                  styles.selectedContainer,
+                  { borderColor: semaforizacion >= 3 ? "#FF9800" : "#F44336" },
+                ]}
                 ListFooterComponent={
                   selectedOptions.length > 0 && (
                     <View>
-                      <Text style={[styles.selectedTitle, { color: textColor }]}>
+                      <Text
+                        style={[styles.selectedTitle, { color: textColor }]}
+                      >
                         Opciones seleccionadas:
                       </Text>
                       {selectedOptions.map((option) => (
                         <View key={option.title}>
-                          <Text style={[styles.selectedOption, { color: textColor }]}>
+                          <Text
+                            style={[
+                              styles.selectedOption,
+                              { color: textColor },
+                            ]}
+                          >
                             {option.title}
                           </Text>
                         </View>

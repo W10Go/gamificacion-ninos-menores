@@ -1,15 +1,28 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-export function Enfermedad({ enfermedad, setEnfermedad, textColor, buttonColor }) {
+export function Enfermedad({
+  enfermedad,
+  setEnfermedad,
+  textColor,
+  buttonColor,
+}) {
   return (
     <View>
       {enfermedad === "none" ? (
         <View>
-          <Text style={[styles.title, { color: textColor }]}>Selecciona enfermedad</Text>
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEnfermedad("IRA")}>
+          <Text style={[styles.title, { color: textColor }]}>
+            Selecciona enfermedad
+          </Text>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setEnfermedad("IRA")}
+          >
             <Text style={styles.buttonText}>IRA(Gripa)</Text>
           </Pressable>
-          <Pressable style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => setEnfermedad("EDA")}>
+          <Pressable
+            style={[styles.button, { backgroundColor: buttonColor }]}
+            onPress={() => setEnfermedad("EDA")}
+          >
             <Text style={styles.buttonText}>EDA(Diarrea)</Text>
           </Pressable>
           <Pressable
@@ -50,4 +63,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

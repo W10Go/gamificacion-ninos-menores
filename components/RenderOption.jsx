@@ -5,23 +5,33 @@ export function RenderOption({
   item,
   handleSelectOption,
   handleRejectedOption,
+  semaforizacion,
 }) {
-  
   return (
     <View style={styles.optionContainer}>
       <Text style={styles.optionTitle}>{item.title}</Text>
- {/* Utilizar la URL de item.image o fallback a kid.jpg */}
-      <Image
-        source={
-          item.image
-            ? { uri: item.image } // URL dinámica de item.image
-            : require("../assets/images/kid.jpg") // Imagen predeterminada
-        }
-        style={styles.optionImage}
-        onError={(error) =>
-          console.log(`Error al cargar la imagen para ${item.title}:`, error)
-        }
-      />
+      {/* Utilizar la URL de item.image o fallback a kid.jpg */}
+      <View style={styles.imageContainer}>
+        <Image
+          source={
+            item.image
+              ? { uri: item.image } // URL dinámica de item.image
+              : require("../assets/images/kid.jpg") // Imagen predeterminada
+          }
+          style={styles.optionImage}
+          onError={(error) =>
+            console.log(`Error al cargar la imagen para ${item.title}:`, error)
+          }
+        />
+        <Image
+          source={
+            semaforizacion >= 3
+              ? require("../assets/images/traffic_light_1.png")
+              : require("../assets/images/traffic_light_1.png")
+          }
+          style={styles.trafficImage}
+        />
+      </View>
       <Text style={styles.optionDescription}>{item.description}</Text>
       <View style={styles.buttonsContainer}>
         <Pressable
@@ -81,11 +91,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
   },
+  imageContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   optionImage: {
     width: 150,
     height: 150,
     borderRadius: 10,
     marginBottom: 10,
+  },
+  trafficImage: {
+    width: 50,
+    height: 70,
+    resizeMode: "contain",
   },
   optionDescription: {
     fontSize: 12,
