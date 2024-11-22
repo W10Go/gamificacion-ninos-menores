@@ -1,28 +1,30 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-export function Edad({ edad, setEdad, textColor, buttonColor }) {
+export function Results({ result, setGenero, textColor, buttonColor }) {
   return (
     <View>
-      {edad === 0 ? (
+      {result === 0 ? (
         <View>
           <Text style={[styles.title, { color: textColor }]}>
-            Selecciona edad
+            Selecciona género
           </Text>
 
           <Pressable
             style={[styles.button, { backgroundColor: buttonColor }]}
-            onPress={() => setEdad(1)}
+            onPress={() => setGenero("boy")}
           >
-            <Text style={styles.buttonText}>De 0 a 11 meses</Text>
+            <Text style={styles.buttonText}>Niño</Text>
           </Pressable>
           <Pressable
             style={[styles.button, { backgroundColor: buttonColor }]}
-            onPress={() => setEdad(2)}
+            onPress={() => setGenero("girl")}
           >
-            <Text style={styles.buttonText}>De 1 a 5 años</Text>
+            <Text style={styles.buttonText}>Niña</Text>
           </Pressable>
         </View>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </View>
   );
 }

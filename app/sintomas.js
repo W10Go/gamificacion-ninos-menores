@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Text, View, FlatList, StyleSheet, Platform } from "react-native";
+import {
+  Image,
+  Text,
+  View,
+  FlatList,
+  StyleSheet,
+  Platform,
+  Pressable,
+} from "react-native";
 import { Genero } from "../components/Genero";
 import { Edad } from "../components/Edad";
 import { Enfermedad } from "../components/Enfermedad";
@@ -15,6 +23,7 @@ export default function Sintomas() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [semaforizacion, setSemaforizacion] = useState(0);
   const [options, setOptions] = useState([]); // Aquí cargaremos los síntomas
+  const [result, setResult] = useState(0);
 
   useEffect(() => {
     if (enfermedad === "IRA") {
@@ -32,17 +41,19 @@ export default function Sintomas() {
       setOptions([]); // Si no hay enfermedad seleccionada, no mostrar nada
     }
   }, [enfermedad]);
-
   const updateSemaforizacion = () => {
     let newSemaforizacion = 0;
     selectedOptions.forEach((option) => {
+      console.log(option.semaforizacion);
+
       if (option.semaforizacion === "amarilla") {
         newSemaforizacion += 1;
       } else {
         newSemaforizacion += 3;
       }
     });
-    setSemaforizacion(newSemaforizacion);
+    newSemaforizacion = newSemaforizacion - semaforizacion;
+    setSemaforizacion((prevSem) => prevSem + newSemaforizacion);
   };
 
   const handleSelectOption = (option) => {
@@ -84,6 +95,10 @@ export default function Sintomas() {
     }
   }, [genero]);
 
+  const handleAlert = () => {
+    setResult(1);
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: color }]}>
       <View style={styles.buttonContainer}>
@@ -100,9 +115,7 @@ export default function Sintomas() {
             textColor={textColor}
             buttonColor={buttonColor}
           />
-        ) : (
-          <></>
-        )}
+        ) : null}
         {edad !== 0 ? (
           <Enfermedad
             enfermedad={enfermedad}
@@ -110,10 +123,8 @@ export default function Sintomas() {
             textColor={textColor}
             buttonColor={buttonColor}
           />
-        ) : (
-          <></>
-        )}
-        {enfermedad !== "none" && options.length > 0 ? (
+        ) : null}
+        {enfermedad !== "none" && options.length > 0 && result === 0 ? (
           <View>
             <Text style={[styles.title, { marginTop: 20, color: textColor }]}>
               Selecciona los síntomas que tiene{" "}
@@ -126,10 +137,7 @@ export default function Sintomas() {
                 keyExtractor={(option) => option.title}
                 numColumns={numColumns}
                 contentContainerStyle={styles.flatListContainer}
-                ListFooterComponentStyle={[
-                  styles.selectedContainer,
-                  { borderColor: semaforizacion >= 3 ? "#FF9800" : "#F44336" },
-                ]}
+                ListFooterComponentStyle={[styles.selectedContainer]}
                 ListFooterComponent={
                   selectedOptions.length > 0 && (
                     <View>
@@ -150,15 +158,32 @@ export default function Sintomas() {
                           </Text>
                         </View>
                       ))}
+                      {/* Botón antes de la imagen */}
+                      <Pressable onPress={handleAlert} style={styles.button}>
+                        <Text style={styles.selectButtonText}>
+                          Realizar Diagnostico
+                        </Text>
+                      </Pressable>
+                      <Image
+                        source={
+                          semaforizacion >= 3
+                            ? require("../assets/images/traffic_light_1.png")
+                            : require("../assets/images/traffic_light_2.png")
+                        }
+                        style={styles.trafficImage}
+                      />
                     </View>
                   )
                 }
               />
             </View>
           </View>
-        ) : (
-          <></>
-        )}
+        ) : null}
+        {result !== 1 ? (
+          <View>
+            <></>
+          </View>
+        ) : null}
       </View>
     </View>
   );
@@ -192,7 +217,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 15,
     borderRadius: 10,
-    borderWidth: 10,
   },
   selectedTitle: {
     fontSize: 20,
@@ -202,5 +226,25 @@ const styles = StyleSheet.create({
   selectedOption: {
     fontSize: 16,
     marginBottom: 5,
+  },
+  trafficImage: {
+    width: 50,
+    height: 70,
+    resizeMode: "contain",
+  },
+  button: {
+    backgroundColor: "#003366", // Azul medianoche para "Sí"
+    paddingVertical: 8,
+    borderRadius: 5,
+    marginRight: 50,
+    alignItems: "center",
+    justifyContent: "center",
+
+    width: "45%", // Botones ocupan el 45% del ancho
+  },
+  selectButtonText: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });

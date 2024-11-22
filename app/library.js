@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Text,
-  View,
-  StyleSheet,
-  Pressable,
-  Platform,
-} from "react-native";
+import { FlatList, Text, View, StyleSheet, Platform } from "react-native";
 import { RenderLibrary } from "../components/RenderLibrary";
 
 export default function Library() {
@@ -25,14 +18,6 @@ export default function Library() {
           keyExtractor={(dato) => dato.title}
         />
       </View>
-
-      {/*data.map((element) => {
-        return (
-          <Pressable style={styles.button} onPress={handlePress}>
-            <Text style={styles.buttonText}>{element.title}</Text>
-          </Pressable>
-        );
-      })*/}
     </View>
   );
 }
@@ -40,6 +25,7 @@ export default function Library() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 70,
     justifyContent: "center", // Centrar en el eje vertical
     alignItems: "center", // Centrar en el eje horizontal
     backgroundColor: Platform.OS === "web" ? "#e3f2fd" : "#bbdefb", // Fondo azul claro

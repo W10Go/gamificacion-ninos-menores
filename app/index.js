@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet, Image } from "react-native";
+import { Pressable, Text, StyleSheet, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
 import { AmaticSC_400Regular } from "@expo-google-fonts/amatic-sc";

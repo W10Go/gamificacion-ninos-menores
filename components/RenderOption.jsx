@@ -24,7 +24,7 @@ export function RenderOption({
         />
         <Image
           source={
-            item.semaforizacion !== "roja"
+            item.semaforizacion === "roja"
               ? require("../assets/images/traffic_light_1.png")
               : require("../assets/images/traffic_light_2.png")
           }
