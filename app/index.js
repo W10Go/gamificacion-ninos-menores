@@ -2,6 +2,7 @@ import { View, Pressable, Text, StyleSheet, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
 import { AmaticSC_400Regular } from '@expo-google-fonts/amatic-sc';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Index() {
   const router = useRouter();
@@ -13,15 +14,18 @@ export default function Index() {
 
   // Esperar a que la fuente se cargue
   if (!fontsLoaded) {
-    return null; // Puedes poner un cargador o un componente vacío mientras se carga la fuente
+    return null;
   }
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#bbdefb", "#64b5f6", "#0d47a1"]} // Degradado de azul claro a oscuro
+      style={styles.container}
+    >
       {/* Logo y título */}
       <Image
         source={{
-          uri: "https://i.ibb.co/gSn16zk/Logo4.png", // URL de tu logo
+          uri: "https://i.ibb.co/gSn16zk/Logo4.png",
         }}
         style={styles.logo}
       />
@@ -31,39 +35,48 @@ export default function Index() {
       <Pressable style={styles.button} onPress={() => router.push("/SplashScreen")}>
         <Text style={styles.buttonText}>Ingresar</Text>
       </Pressable>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center", // Centrado vertical
-    alignItems: "center", // Centrado horizontal
-    backgroundColor: "#bbdefb", // Fondo azul claro
+    justifyContent: "center",
+    alignItems: "center",
   },
   logo: {
-    width: 200, // Ancho del logo
-    height: 200, // Alto del logo
-    marginBottom: 20, // Espacio entre el logo y el título
+    width: 200,
+    height: 200,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 35, // Tamaño más grande para el título
-    fontWeight: "bold", // Puedes ajustar esto si lo deseas
-    color: "#0d47a1", // Azul oscuro para el título
-    marginBottom: 20, // Espacio entre el título y el botón
-    fontFamily: 'AmaticSC_400Regular', // Usar la fuente Amatic SC
+    fontSize: 55,
+    color: "#fff",
+    marginBottom: 40,
+    fontFamily: 'AmaticSC_400Regular',
+    textShadowColor: "rgba(0, 0, 0, 0.5)", // Sombra negra semi-transparente
+    textShadowOffset: { width: 2, height: 2 }, // Desplazamiento de la sombra
+    textShadowRadius: 4, // Difusión de la sombra
   },
   button: {
-    backgroundColor: "#64b5f6", // Azul brillante para el botón
+    backgroundColor: "#64b5f6",
     paddingVertical: 15,
     paddingHorizontal: 40,
-    borderRadius: 10,
+    borderRadius: 30,
+    shadowColor: "#000", // Sombra negra para el botón
+    shadowOffset: { width: 0, height: 4 }, // Desplazamiento de la sombra
+    shadowOpacity: 0.3, // Opacidad de la sombra
+    shadowRadius: 6, // Difusión de la sombra
+    elevation: 6, // Sombra para Android
   },
   buttonText: {
-    color: "#fff", // Texto blanco para el botón
+    color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+    textShadowColor: "rgba(0, 0, 0, 0.4)", // Sombra negra semi-transparente para el texto del botón
+    textShadowOffset: { width: 1, height: 1 }, // Desplazamiento de la sombra
+    textShadowRadius: 2, // Difusión de la sombra
   },
 });
 
