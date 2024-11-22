@@ -1,11 +1,10 @@
-import { useImage, Image } from "expo-image";
+import { Image } from "expo-image";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 
 export function RenderOption({
   item,
   handleSelectOption,
   handleRejectedOption,
-  semaforizacion,
 }) {
   return (
     <View style={styles.optionContainer}>
@@ -25,9 +24,9 @@ export function RenderOption({
         />
         <Image
           source={
-            semaforizacion >= 3
+            item.semaforizacion !== "roja"
               ? require("../assets/images/traffic_light_1.png")
-              : require("../assets/images/traffic_light_1.png")
+              : require("../assets/images/traffic_light_2.png")
           }
           style={styles.trafficImage}
         />
