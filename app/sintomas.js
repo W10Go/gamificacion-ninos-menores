@@ -3,6 +3,7 @@ import {
   Image,
   Text,
   View,
+  ScrollView,
   FlatList,
   StyleSheet,
   Platform,
@@ -12,6 +13,7 @@ import { Genero } from "../components/Genero";
 import { Edad } from "../components/Edad";
 import { Enfermedad } from "../components/Enfermedad";
 import { RenderOption } from "../components/RenderOption";
+import { Link } from "expo-router";
 
 export default function Sintomas() {
   const [color, setColor] = useState("");
@@ -41,26 +43,27 @@ export default function Sintomas() {
       setOptions([]); // Si no hay enfermedad seleccionada, no mostrar nada
     }
   }, [enfermedad]);
+
   const updateSemaforizacion = () => {
     let newSemaforizacion = 0;
     selectedOptions.forEach((option) => {
-      console.log(option.semaforizacion);
-
       if (option.semaforizacion === "amarilla") {
         newSemaforizacion += 1;
       } else {
         newSemaforizacion += 3;
       }
     });
-    newSemaforizacion = newSemaforizacion - semaforizacion;
-    setSemaforizacion((prevSem) => prevSem + newSemaforizacion);
+    setSemaforizacion(newSemaforizacion);
   };
+
+  useEffect(() => {
+    updateSemaforizacion();
+  }, [selectedOptions]);
 
   const handleSelectOption = (option) => {
     const isRepeated = selectedOptions.includes(option);
     if (!isRepeated) {
       setSelectedOptions((prevSelected) => [...prevSelected, option]);
-      updateSemaforizacion();
     }
   };
 
@@ -68,7 +71,6 @@ export default function Sintomas() {
     const isRepeated = selectedOptions.includes(option);
     if (isRepeated) {
       setSelectedOptions(selectedOptions.filter((item) => item !== option));
-      updateSemaforizacion();
     }
   };
 
@@ -139,49 +141,70 @@ export default function Sintomas() {
                 contentContainerStyle={styles.flatListContainer}
                 ListFooterComponentStyle={[styles.selectedContainer]}
                 ListFooterComponent={
-                  selectedOptions.length > 0 && (
-                    <View>
-                      <Text
-                        style={[styles.selectedTitle, { color: textColor }]}
-                      >
-                        Opciones seleccionadas:
-                      </Text>
-                      {selectedOptions.map((option) => (
-                        <View key={option.title}>
-                          <Text
-                            style={[
-                              styles.selectedOption,
-                              { color: textColor },
-                            ]}
-                          >
-                            {option.title}
-                          </Text>
-                        </View>
-                      ))}
-                      {/* Botón antes de la imagen */}
-                      <Pressable onPress={handleAlert} style={styles.button}>
-                        <Text style={styles.selectButtonText}>
-                          Realizar Diagnostico
+                  <View>
+                    <Text style={[styles.selectedTitle, { color: textColor }]}>
+                      Opciones seleccionadas:
+                    </Text>
+                    {selectedOptions.map((option) => (
+                      <View key={option.title}>
+                        <Text
+                          style={[styles.selectedOption, { color: textColor }]}
+                        >
+                          {option.title}
                         </Text>
-                      </Pressable>
-                      <Image
-                        source={
-                          semaforizacion >= 3
-                            ? require("../assets/images/traffic_light_1.png")
-                            : require("../assets/images/traffic_light_2.png")
-                        }
-                        style={styles.trafficImage}
-                      />
-                    </View>
-                  )
+                      </View>
+                    ))}
+                    {/* Botón antes de la imagen */}
+                    <Pressable onPress={handleAlert} style={styles.button}>
+                      <Text style={styles.selectButtonText}>
+                        Realizar Diagnostico
+                      </Text>
+                    </Pressable>
+                  </View>
                 }
               />
             </View>
           </View>
         ) : null}
-        {result !== 1 ? (
+        {result !== 0 ? (
           <View>
-            <></>
+            <ScrollView style={styles.resultContainer}>
+              <View style={styles.resultTextContainer}>
+                <Text style={[styles.title, { color: textColor }]}>
+                  Diagnostico Completo
+                </Text>
+                <Text style={styles.textRead}>
+                  {semaforizacion >= 3
+                    ? require("../assets/data/recomendaciones.json").rojo
+                    : semaforizacion !== 0
+                      ? require("../assets/data/recomendaciones.json").amarillo
+                      : require("../assets/data/recomendaciones.json").verde}
+                </Text>
+                <View style={styles.resultButtonContainer}>
+                  <Link asChild href="/SplashScreen">
+                    <Pressable style={styles.button}>
+                      <Text style={styles.selectButtonText}>Regresar</Text>
+                    </Pressable>
+                  </Link>
+                  <Image
+                    source={
+                      semaforizacion >= 3
+                        ? require("../assets/images/traffic_light_1.png")
+                        : semaforizacion !== 0
+                          ? require("../assets/images/traffic_light_2.png")
+                          : require("../assets/images/traffic_light_3.png")
+                    }
+                    style={styles.trafficImage}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+            <Image
+              style={styles.imageNurse}
+              source={{
+                uri: "https://i.ibb.co/1fWvRRr/Default-nurse-with-hand-in-pocket-looking-at-camera-34-angle-f-2-820f4cb6-516d-47b7-b113-6c7d0d45c80.png",
+              }}
+            />
           </View>
         ) : null}
       </View>
@@ -197,6 +220,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
+    paddingTop: 10,
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: 40,
@@ -219,18 +243,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   selectedTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     marginBottom: 10,
   },
   selectedOption: {
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 5,
   },
   trafficImage: {
     width: 50,
     height: 70,
     resizeMode: "contain",
+    alignSelf: "flex-end",
   },
   button: {
     backgroundColor: "#003366", // Azul medianoche para "Sí"
@@ -239,12 +264,33 @@ const styles = StyleSheet.create({
     marginRight: 50,
     alignItems: "center",
     justifyContent: "center",
-
     width: "45%", // Botones ocupan el 45% del ancho
+    height: "40",
   },
   selectButtonText: {
     color: "#fff",
     fontSize: 14,
     fontWeight: "bold",
+  },
+  resultContainer: {
+    height: "50%",
+    backgroundColor: "#fff",
+    paddingHorizontal: 30,
+    borderRadius: 15,
+  },
+  resultButtonContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageNurse: {
+    width: 150,
+    height: "35%",
+    borderRadius: 10,
+    marginBottom: 10,
+    alignSelf: "flex-end",
+  },
+  textRead: {
+    fontSize: 20,
   },
 });

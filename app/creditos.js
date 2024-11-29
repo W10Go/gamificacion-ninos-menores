@@ -2,26 +2,26 @@ import { View, Pressable, Text, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function SplashScreen() {
+export default function Creditos() {
   return (
     <LinearGradient
       colors={["#bbdefb", "#64b5f6", "#0d47a1"]} // Degradado con tonos azules más claros
       style={styles.container}
     >
-      <Text style={styles.title}>Bienvenido</Text>
-
+      <Text style={styles.title}>Desarrolladores</Text>
+      <Text>Diego Alejandro Carvajal</Text>
+      <Text>Daniel Esteban Sanchez</Text>
+      <Text style={styles.title}>Tutores</Text>
+      <Text>Diana Margot Lopez Herrera</Text>
+      <Text>Francy Edith López Herrera</Text>
+      <Text style={styles.title}>Investigación y Apoyo</Text>
+      <Text>Diana Marcela Luna Rios</Text>
+      <Text>Maria Salome Jimenez Villa</Text>
       <View style={styles.buttonContainer}>
-        {/* Botón que lleva a la página de enciclopedia */}
-        <Link asChild href="/library">
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Enciclopedia</Text>
-          </Pressable>
-        </Link>
-
         {/* Botón que lleva a la página de síntomas */}
-        <Link asChild href="/sintomas">
+        <Link asChild href="/">
           <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Identificar Enfermedad</Text>
+            <Text style={styles.buttonText}>Regresar</Text>
           </Pressable>
         </Link>
       </View>
@@ -39,10 +39,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    marginBottom: 40,
+    marginTop: 40,
     color: "#0d47a1", // Azul oscuro para contraste
   },
   buttonContainer: {
+    marginTop: 40,
     width: "100%",
     alignItems: "center",
   },

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   optionTitle: {
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: "bold",
     color: "#0d47a1",
     marginBottom: 10,
@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
   },
   optionImage: {
@@ -100,6 +99,7 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 10,
     marginBottom: 10,
+    marginLeft: "15%",
   },
   trafficImage: {
     width: 50,
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   optionDescription: {
-    fontSize: 12,
+    fontSize: 20,
     marginBottom: 10,
     color: "#333",
     textAlign: "center",

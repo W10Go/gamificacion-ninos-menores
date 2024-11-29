@@ -22,9 +22,7 @@ export function Genero({ genero, setGenero, textColor, buttonColor }) {
             <Text style={styles.buttonText}>Niña</Text>
           </Pressable>
         </View>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </View>
   );
 }

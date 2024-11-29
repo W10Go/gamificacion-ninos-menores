@@ -25,7 +25,6 @@ export function RenderLibrary({ item }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
     marginBottom: 20,
     alignItems: "center",
     justifyContent: "center",
@@ -56,6 +55,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 5,
   },
   recomendacionesText: {
+    fontSize: 20,
     backgroundColor: "#fff",
   },
 });

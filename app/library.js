@@ -38,11 +38,8 @@ const styles = StyleSheet.create({
     color: "#0d47a1", // Azul oscuro para contraste
   },
   dataContainer: {
-    optionsContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-    },
+    justifyContent: "center",
+    alignItems: "center",
   },
   flatListContainer: {},
   buttonContainer: {
