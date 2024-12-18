@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
-import {
-  Image,
-  Text,
-  View,
-  ScrollView,
-  FlatList,
-  StyleSheet,
-  Platform,
-  Pressable,
-} from "react-native";
+import { Text, View, FlatList, StyleSheet, Platform } from "react-native";
 import { Genero } from "../components/Genero";
 import { Edad } from "../components/Edad";
 import { Enfermedad } from "../components/Enfermedad";
 import { RenderOption } from "../components/RenderOption";
-import { Link } from "expo-router";
+import { RenderOptionFooter } from "../components/RenderOptionFooter";
+import { Result } from "../components/Result";
 
 export default function Sintomas() {
   const [color, setColor] = useState("");
@@ -38,7 +30,7 @@ export default function Sintomas() {
       // Combinar síntomas de IRA y EDA
       const sintomasIRA = require("../assets/data/sintomasIRA.json");
       const sintomasEDA = require("../assets/data/sintomasEDA.json");
-      setOptions([...sintomasIRA, ...sintomasEDA]); // Combina ambas listas
+      setOptions([...sintomasIRA, ...sintomasEDA].filter((_, i) => i !== 1)); // Combina ambas listas
     } else {
       setOptions([]); // Si no hay enfermedad seleccionada, no mostrar nada
     }
@@ -141,71 +133,22 @@ export default function Sintomas() {
                 contentContainerStyle={styles.flatListContainer}
                 ListFooterComponentStyle={[styles.selectedContainer]}
                 ListFooterComponent={
-                  <View>
-                    <Text style={[styles.selectedTitle, { color: textColor }]}>
-                      Opciones seleccionadas:
-                    </Text>
-                    {selectedOptions.map((option) => (
-                      <View key={option.title}>
-                        <Text
-                          style={[styles.selectedOption, { color: textColor }]}
-                        >
-                          {option.title}
-                        </Text>
-                      </View>
-                    ))}
-                    {/* Botón antes de la imagen */}
-                    <Pressable onPress={handleAlert} style={styles.button}>
-                      <Text style={styles.selectButtonText}>
-                        Realizar Diagnostico
-                      </Text>
-                    </Pressable>
-                  </View>
+                  <RenderOptionFooter
+                    textColor={textColor}
+                    selectedOptions={selectedOptions}
+                    handleAlert={handleAlert}
+                  />
                 }
               />
             </View>
           </View>
         ) : null}
         {result !== 0 ? (
-          <View>
-            <ScrollView style={styles.resultContainer}>
-              <View style={styles.resultTextContainer}>
-                <Text style={[styles.title, { color: textColor }]}>
-                  Diagnostico Completo
-                </Text>
-                <Text style={styles.textRead}>
-                  {semaforizacion >= 3
-                    ? require("../assets/data/recomendaciones.json").rojo
-                    : semaforizacion !== 0
-                      ? require("../assets/data/recomendaciones.json").amarillo
-                      : require("../assets/data/recomendaciones.json").verde}
-                </Text>
-                <View style={styles.resultButtonContainer}>
-                  <Link asChild href="/SplashScreen">
-                    <Pressable style={styles.button}>
-                      <Text style={styles.selectButtonText}>Regresar</Text>
-                    </Pressable>
-                  </Link>
-                  <Image
-                    source={
-                      semaforizacion >= 3
-                        ? require("../assets/images/traffic_light_1.png")
-                        : semaforizacion !== 0
-                          ? require("../assets/images/traffic_light_2.png")
-                          : require("../assets/images/traffic_light_3.png")
-                    }
-                    style={styles.trafficImage}
-                  />
-                </View>
-              </View>
-            </ScrollView>
-            <Image
-              style={styles.imageNurse}
-              source={{
-                uri: "https://i.ibb.co/1fWvRRr/Default-nurse-with-hand-in-pocket-looking-at-camera-34-angle-f-2-820f4cb6-516d-47b7-b113-6c7d0d45c80.png",
-              }}
-            />
-          </View>
+          <Result
+            textColor={textColor}
+            semaforizacion={semaforizacion}
+            enfermedad={enfermedad}
+          />
         ) : null}
       </View>
     </View>
